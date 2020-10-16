@@ -1,0 +1,11 @@
+spring:
+  elasticsearch:
+    rest:
+      password: ''
+      uris: http://localhost:9200
+      username: ''
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://cognito-idp.us-east-1.amazonaws.com/us-east-xxx/.well-known/jwks.json
