@@ -16,7 +16,6 @@ public class Skill {
     String name;
 
     String category;
-    String subCategory;
 
     /**
      * potential match for this skill

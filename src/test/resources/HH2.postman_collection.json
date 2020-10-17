@@ -83,6 +83,163 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Create Skills (SKILL)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"skill:1000001\",\n    \"classification\": \"SKILL\",\n    \"name\": \"Hacking\",\n    \"category\": \"Computers\",\n    \"candidateCount\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/skills/SKILL:1000001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"skills",
+						"SKILL:1000001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Skills (PRODUCT)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"PRODUCT:1000001\",\n    \"classification\": \"PRODUCT\",\n    \"name\": \"SAP\",\n    \"category\": \"Resource Management Software\",\n    \"candidateCount\": 20\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/skills/PRODUCT:1000001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"skills",
+						"PRODUCT:1000001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Skills (CERTIFICATION)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"CERTIFICATION:1000001\",\n    \"classification\": \"CERTIFICATION\",\n    \"name\": \"Oracle Certified Java 15 Pro\",\n    \"category\": \"Programming Language\",\n    \"candidateCount\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/skills/CERTIFICATION:1000001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"skills",
+						"CERTIFICATION:1000001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Skills",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJraWQiOiJ0S081cmI3ZkVXNDNXMlVyUG5xcmt1NnFSeVFuSDNjWVdZN0ptMVArQTVvPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI5ZGFkMzE5Yy0yMjJhLTQ4MDYtOWI1YS0yNzcyYmNlNWQ2YzgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZ2VuZGVyIjoiTSIsImhoOmludGVybmFsIjoiZmFsc2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9SUTcxdFpxUVQiLCJjb2duaXRvOnVzZXJuYW1lIjoibHluZG9uLmJpYmVyYUBoZWFkaHVudHIuaW8iLCJnaXZlbl9uYW1lIjoiTHluZG9uIE1pY2hhZWwiLCJtaWRkbGVfbmFtZSI6IkNyYXBzaG9vdGVyIiwiYXVkIjoiNW84NnZhc3Q0cDN0aGMxZDljbTFwbjBwOTIiLCJldmVudF9pZCI6ImFhZTc0YTM0LTQyNWYtNDNkOS1hYWZkLTA0ZjY3NTU3NmQxMCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjAyODk2Mzk1LCJleHAiOjE2MDI5ODI3OTUsImlhdCI6MTYwMjg5NjM5NSwiZmFtaWx5X25hbWUiOiJCdXN0ZXJmYWNlIiwiZW1haWwiOiJseW5kb24uYmliZXJhQGhlYWRodW50ci5pbyJ9.kO-YYPxHhn0f6I0yuJfPTZX7_yjKWDp6mYfaXlNniGSTjJlx4rMLrogLGb4KaCD-sQ3Rjv3bNOT4frRw_pGEHh4346bir2tymLpZ6fgzDc9fNRdHuKiLyOSz7Gk7TgO_jnmonvgewuvZ5qoT2ccV9EjtE3JPaXzpzxYPA-CIRZthyX7VUXER9iYaPbGRtz62bfETxEe25KnhAYaHi1qZYY395_JRGju5-ufffRbViTO2ZUBLGOYxR1J2oG2-yA1m_xoGa6juln3wON2RrFrTNDpmcO6meD9Ib1QV1V7kYlvBwtrO5zLKPH6sdPKlDqqYOTl5BdWW-vWqQjP6yvIqtg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/skills/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"skills",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
