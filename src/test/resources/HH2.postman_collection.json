@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "08b1996a-4507-4529-ad8e-5419c3009827",
+		"name": "HH2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Candidate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Dolores\",\n    \"lastName\": \"Abernathy\",\n    \"fullName\": \"Dolores Abernathy\",\n    \"monthsExperience\": 32,\n    \"contactDetails\": [\n        {\n            \"sequence\": 1,\n            \"type\": \"EMAIL\",\n            \"value\": \"hacked@hacked.com\"\n        },\n        {\n            \"sequence\": 2,\n            \"type\": \"PERSONAL_PHONE\",\n            \"value\": \"123456789\"\n        }\n    ],\n    \"jobHistory\": [\n        {\n            \"sequence\": 1,\n            \"companyId\": \"1000001\",\n            \"companyName\": \"Delos Corp\",\n            \"title\": \"Host\",\n            \"description\": \"Pretended to be a Human\",\n            \"start\": \"2001-01-01\",\n            \"end\": \"2020-01-01\",\n            \"location\": \"Somewhere in South China Sea\",\n            \"monthsExperience\": 200\n        }\n    ],\n    \"skills\": [\n        {\n            \"id\": \"skill:1000001\",\n            \"monthsExperience\": 20,\n            \"sequence\": 1,\n            \"name\": \"Hacking\",\n            \"category\": \"Computers\",\n            \"classification\": \"SKILL\"\n        }\n    ],\n    \"industries\": [\n        {\n            \"id\": \"1000001\",\n            \"sequence\": 1,\n            \"current\": true,\n            \"monthsExperience\": 20,\n            \"parent\": \"IT\",\n            \"name\": \"Software\",\n            \"start\": \"2001-01-01\",\n            \"end\": \"2020-01-01\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/candidates/100001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"candidates",
+						"100001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Candidates",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJraWQiOiJ0S081cmI3ZkVXNDNXMlVyUG5xcmt1NnFSeVFuSDNjWVdZN0ptMVArQTVvPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI5ZGFkMzE5Yy0yMjJhLTQ4MDYtOWI1YS0yNzcyYmNlNWQ2YzgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZ2VuZGVyIjoiTSIsImhoOmludGVybmFsIjoiZmFsc2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9SUTcxdFpxUVQiLCJjb2duaXRvOnVzZXJuYW1lIjoibHluZG9uLmJpYmVyYUBoZWFkaHVudHIuaW8iLCJnaXZlbl9uYW1lIjoiTHluZG9uIE1pY2hhZWwiLCJtaWRkbGVfbmFtZSI6IkNyYXBzaG9vdGVyIiwiYXVkIjoiNW84NnZhc3Q0cDN0aGMxZDljbTFwbjBwOTIiLCJldmVudF9pZCI6ImFhZTc0YTM0LTQyNWYtNDNkOS1hYWZkLTA0ZjY3NTU3NmQxMCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjAyODk2Mzk1LCJleHAiOjE2MDI5ODI3OTUsImlhdCI6MTYwMjg5NjM5NSwiZmFtaWx5X25hbWUiOiJCdXN0ZXJmYWNlIiwiZW1haWwiOiJseW5kb24uYmliZXJhQGhlYWRodW50ci5pbyJ9.kO-YYPxHhn0f6I0yuJfPTZX7_yjKWDp6mYfaXlNniGSTjJlx4rMLrogLGb4KaCD-sQ3Rjv3bNOT4frRw_pGEHh4346bir2tymLpZ6fgzDc9fNRdHuKiLyOSz7Gk7TgO_jnmonvgewuvZ5qoT2ccV9EjtE3JPaXzpzxYPA-CIRZthyX7VUXER9iYaPbGRtz62bfETxEe25KnhAYaHi1qZYY395_JRGju5-ufffRbViTO2ZUBLGOYxR1J2oG2-yA1m_xoGa6juln3wON2RrFrTNDpmcO6meD9Ib1QV1V7kYlvBwtrO5zLKPH6sdPKlDqqYOTl5BdWW-vWqQjP6yvIqtg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/candidates/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"candidates",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
