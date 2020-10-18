@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "c2272fd7-a783-4052-9b0f-c84e50bb9af6",
+		"name": "ES Index",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Index",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"candHashId\": \"d4fbab2eae34465bdd309ea409e20921\",\n    \"dateCreated\": \"2019-12-10T00:00:00.000\",\n    \"candId\": 62800115,\n    \"esCandProfile\": [\n        {\n            \"firstName\": \"Shannon\",\n            \"lastName\": \"Takacs\",\n            \"dateCreated\": \"2017-08-06T00:00:00.000\",\n            \"candId\": 62800115,\n            \"createdBy\": \"jerome\",\n            \"fullName\": \"Shannon Takacs\",\n            \"dateModified\": \"2019-02-21T00:00:00.000\",\n            \"modifiedBy\": \"jerome\",\n            \"headline\": \"--\"\n        }\n    ],\n    \"dateModified\": \"2019-12-10T00:00:00.000\"\n}"
+				},
+				"url": {
+					"raw": "{{esUrl}}",
+					"host": [
+						"{{esUrl}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Candidate: DELETE Index",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"candHashId\": \"d4fbab2eae34465bdd309ea409e20921\",\n    \"dateCreated\": \"2019-12-10T00:00:00.000\",\n    \"candId\": 62800115,\n    \"esCandProfile\": [\n        {\n            \"firstName\": \"Shannon\",\n            \"lastName\": \"Takacs\",\n            \"dateCreated\": \"2017-08-06T00:00:00.000\",\n            \"candId\": 62800115,\n            \"createdBy\": \"jerome\",\n            \"fullName\": \"Shannon Takacs\",\n            \"dateModified\": \"2019-02-21T00:00:00.000\",\n            \"modifiedBy\": \"jerome\",\n            \"headline\": \"--\"\n        }\n    ],\n    \"dateModified\": \"2019-12-10T00:00:00.000\"\n}"
+				},
+				"url": {
+					"raw": "{{esUrl}}/hh2_candidates",
+					"host": [
+						"{{esUrl}}"
+					],
+					"path": [
+						"hh2_candidates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Candidate: Create Index",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mappings\": {\n        \"dynamic\": false,\n        \"properties\": {\n            \"id\": {\n                \"type\": \"keyword\"\n            },\n            \"firstName\": {\n                \"type\": \"keyword\"\n            },\n            \"fullName\": {\n                \"type\": \"keyword\"\n            },\n            \"lastName\": {\n                \"type\": \"keyword\"\n            },\n            \"monthsExperience\": {\n                \"type\": \"integer\"\n            },\n            \"jobHistories\": {\n                \"type\": \"nested\",\n                \"properties\": {\n                    \"sequence\": {\n                        \"type\": \"integer\"\n                    },\n                    \"companyId\": {\n                        \"type\": \"integer\"\n                    },\n                    \"companyName\": {\n                        \"type\": \"keyword\"\n                    },\n                    \"title\": {\n                        \"type\": \"text\"\n                    },\n                    \"description\": {\n                        \"type\": \"text\"\n                    },\n                    \"start\": {\n                        \"type\": \"keyword\"\n                    },\n                    \"end\": {\n                        \"type\": \"keyword\"\n                    },\n                    \"location\": {\n                        \"type\": \"keyword\"\n                    },\n                    \"monthsExperience\": {\n                        \"type\": \"integer\"\n                    }\n                }\n            }\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "{{esUrl}}/hh2_candidates",
+					"host": [
+						"{{esUrl}}"
+					],
+					"path": [
+						"hh2_candidates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Candidate: Search All",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7475b520-664b-4207-a266-a6949ca1953b",
+						"exec": [
+							"pm.test(\"response is OK\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": {\n        \"match_all\": {}\n    }\n}"
+				},
+				"url": {
+					"raw": "{{esUrl}}/hh2_candidates/_search",
+					"host": [
+						"{{esUrl}}"
+					],
+					"path": [
+						"hh2_candidates",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Companies: DELETE Index",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{esUrl}}/hh2_companies",
+					"host": [
+						"{{esUrl}}"
+					],
+					"path": [
+						"hh2_companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Companies: Create Index",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"settings\": {\n        \"analysis\": {\n            \"analyzer\": {\n                \"ngram_autocomplete\": {\n                    \"tokenizer\": \"my_tokenizer\",\n                    \"filter\": [\n                        \"lowercase\"\n                    ]\n                }\n            },\n            \"tokenizer\": {\n                \"my_tokenizer\": {\n                    \"type\": \"edge_ngram\",\n                    \"min_gram\": 1,\n                    \"max_gram\": 30,\n                    \"token_chars\": [\n                        \"letter\",\n                        \"digit\",\n                        \"whitespace\",\n                        \"punctuation\"\n                    ]\n                }\n            }\n        }\n    },\n    \"mappings\": {\n        \"dynamic\": false,\n        \"properties\": {\n            \"id\": {\n                \"type\": \"keyword\"\n            },\n            \"name\": {\n                \"type\": \"keyword\",\n                \"fields\": {\n                    \"autocomplete\": {\n                        \"type\": \"text\",\n                        \"analyzer\": \"ngram_autocomplete\"\n                    }\n                }\n            },\n            \"candidateCount\": {\n                \"type\": \"integer\"\n            }\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "{{esUrl}}/hh2_companies",
+					"host": [
+						"{{esUrl}}"
+					],
+					"path": [
+						"hh2_companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Companies: Search All",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "afe0c2a9-f015-4f06-a74e-3fbe319bcac5",
+						"exec": [
+							"pm.test(\"response is OK\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{esUrl}}/hh2_companies/_search",
+					"host": [
+						"{{esUrl}}"
+					],
+					"path": [
+						"hh2_companies",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d645ace9-5ad7-4914-95c0-684c96f38ec3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c5ce458a-68de-46ed-89c7-948844399538",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

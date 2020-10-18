@@ -85,6 +85,130 @@
 			"response": []
 		},
 		{
+			"name": "List Companies",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJraWQiOiJ0S081cmI3ZkVXNDNXMlVyUG5xcmt1NnFSeVFuSDNjWVdZN0ptMVArQTVvPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI5ZGFkMzE5Yy0yMjJhLTQ4MDYtOWI1YS0yNzcyYmNlNWQ2YzgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZ2VuZGVyIjoiTSIsImhoOmludGVybmFsIjoiZmFsc2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9SUTcxdFpxUVQiLCJjb2duaXRvOnVzZXJuYW1lIjoibHluZG9uLmJpYmVyYUBoZWFkaHVudHIuaW8iLCJnaXZlbl9uYW1lIjoiTHluZG9uIE1pY2hhZWwiLCJtaWRkbGVfbmFtZSI6IkNyYXBzaG9vdGVyIiwiYXVkIjoiNW84NnZhc3Q0cDN0aGMxZDljbTFwbjBwOTIiLCJldmVudF9pZCI6ImFhZTc0YTM0LTQyNWYtNDNkOS1hYWZkLTA0ZjY3NTU3NmQxMCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjAyODk2Mzk1LCJleHAiOjE2MDI5ODI3OTUsImlhdCI6MTYwMjg5NjM5NSwiZmFtaWx5X25hbWUiOiJCdXN0ZXJmYWNlIiwiZW1haWwiOiJseW5kb24uYmliZXJhQGhlYWRodW50ci5pbyJ9.kO-YYPxHhn0f6I0yuJfPTZX7_yjKWDp6mYfaXlNniGSTjJlx4rMLrogLGb4KaCD-sQ3Rjv3bNOT4frRw_pGEHh4346bir2tymLpZ6fgzDc9fNRdHuKiLyOSz7Gk7TgO_jnmonvgewuvZ5qoT2ccV9EjtE3JPaXzpzxYPA-CIRZthyX7VUXER9iYaPbGRtz62bfETxEe25KnhAYaHi1qZYY395_JRGju5-ufffRbViTO2ZUBLGOYxR1J2oG2-yA1m_xoGa6juln3wON2RrFrTNDpmcO6meD9Ib1QV1V7kYlvBwtrO5zLKPH6sdPKlDqqYOTl5BdWW-vWqQjP6yvIqtg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/companies/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"companies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List ES:Candidates",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJraWQiOiJ0S081cmI3ZkVXNDNXMlVyUG5xcmt1NnFSeVFuSDNjWVdZN0ptMVArQTVvPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI5ZGFkMzE5Yy0yMjJhLTQ4MDYtOWI1YS0yNzcyYmNlNWQ2YzgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZ2VuZGVyIjoiTSIsImhoOmludGVybmFsIjoiZmFsc2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9SUTcxdFpxUVQiLCJjb2duaXRvOnVzZXJuYW1lIjoibHluZG9uLmJpYmVyYUBoZWFkaHVudHIuaW8iLCJnaXZlbl9uYW1lIjoiTHluZG9uIE1pY2hhZWwiLCJtaWRkbGVfbmFtZSI6IkNyYXBzaG9vdGVyIiwiYXVkIjoiNW84NnZhc3Q0cDN0aGMxZDljbTFwbjBwOTIiLCJldmVudF9pZCI6ImFhZTc0YTM0LTQyNWYtNDNkOS1hYWZkLTA0ZjY3NTU3NmQxMCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjAyODk2Mzk1LCJleHAiOjE2MDI5ODI3OTUsImlhdCI6MTYwMjg5NjM5NSwiZmFtaWx5X25hbWUiOiJCdXN0ZXJmYWNlIiwiZW1haWwiOiJseW5kb24uYmliZXJhQGhlYWRodW50ci5pbyJ9.kO-YYPxHhn0f6I0yuJfPTZX7_yjKWDp6mYfaXlNniGSTjJlx4rMLrogLGb4KaCD-sQ3Rjv3bNOT4frRw_pGEHh4346bir2tymLpZ6fgzDc9fNRdHuKiLyOSz7Gk7TgO_jnmonvgewuvZ5qoT2ccV9EjtE3JPaXzpzxYPA-CIRZthyX7VUXER9iYaPbGRtz62bfETxEe25KnhAYaHi1qZYY395_JRGju5-ufffRbViTO2ZUBLGOYxR1J2oG2-yA1m_xoGa6juln3wON2RrFrTNDpmcO6meD9Ib1QV1V7kYlvBwtrO5zLKPH6sdPKlDqqYOTl5BdWW-vWqQjP6yvIqtg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/hh2_candidates/_search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"hh2_candidates",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List ES:Companies",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJraWQiOiJ0S081cmI3ZkVXNDNXMlVyUG5xcmt1NnFSeVFuSDNjWVdZN0ptMVArQTVvPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI5ZGFkMzE5Yy0yMjJhLTQ4MDYtOWI1YS0yNzcyYmNlNWQ2YzgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZ2VuZGVyIjoiTSIsImhoOmludGVybmFsIjoiZmFsc2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9SUTcxdFpxUVQiLCJjb2duaXRvOnVzZXJuYW1lIjoibHluZG9uLmJpYmVyYUBoZWFkaHVudHIuaW8iLCJnaXZlbl9uYW1lIjoiTHluZG9uIE1pY2hhZWwiLCJtaWRkbGVfbmFtZSI6IkNyYXBzaG9vdGVyIiwiYXVkIjoiNW84NnZhc3Q0cDN0aGMxZDljbTFwbjBwOTIiLCJldmVudF9pZCI6ImFhZTc0YTM0LTQyNWYtNDNkOS1hYWZkLTA0ZjY3NTU3NmQxMCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjAyODk2Mzk1LCJleHAiOjE2MDI5ODI3OTUsImlhdCI6MTYwMjg5NjM5NSwiZmFtaWx5X25hbWUiOiJCdXN0ZXJmYWNlIiwiZW1haWwiOiJseW5kb24uYmliZXJhQGhlYWRodW50ci5pbyJ9.kO-YYPxHhn0f6I0yuJfPTZX7_yjKWDp6mYfaXlNniGSTjJlx4rMLrogLGb4KaCD-sQ3Rjv3bNOT4frRw_pGEHh4346bir2tymLpZ6fgzDc9fNRdHuKiLyOSz7Gk7TgO_jnmonvgewuvZ5qoT2ccV9EjtE3JPaXzpzxYPA-CIRZthyX7VUXER9iYaPbGRtz62bfETxEe25KnhAYaHi1qZYY395_JRGju5-ufffRbViTO2ZUBLGOYxR1J2oG2-yA1m_xoGa6juln3wON2RrFrTNDpmcO6meD9Ib1QV1V7kYlvBwtrO5zLKPH6sdPKlDqqYOTl5BdWW-vWqQjP6yvIqtg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/hh2_companies/_search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"hh2_companies",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Create Skills (SKILL)",
 			"request": {
 				"auth": {
