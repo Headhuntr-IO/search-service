@@ -9,3 +9,12 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: https://cognito-idp.us-east-1.amazonaws.com/us-east-xxx/.well-known/jwks.json
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: info,health
