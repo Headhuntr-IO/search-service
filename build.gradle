@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'io.headhuntr'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.3'
 sourceCompatibility = '11'
 
 configurations {
@@ -24,6 +24,9 @@ repositories {
 }
 
 dependencies {
+	//aws xray
+	implementation 'com.amazonaws:aws-xray-recorder-sdk-spring:2.4.0'
+
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
 	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
