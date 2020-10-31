@@ -9,6 +9,8 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: https://cognito-idp.us-east-1.amazonaws.com/us-east-xxx/.well-known/jwks.json
+  session:
+    store-type: none
 
 management:
   endpoint:
