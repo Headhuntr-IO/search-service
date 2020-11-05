@@ -12,6 +12,10 @@ spring:
   session:
     store-type: none
 
+springdoc:
+  paths-to-exclude:
+    - '/profile/**'
+
 management:
   endpoint:
     health:
