@@ -67,13 +67,22 @@ public class Candidate {
         )
         Integer sequence;
 
-        /**
-         * email, phone, etc
-         */
-        String type;
+        @Schema(
+                description = "Classification of the contact type: Email or Phone"
+        )
+        Type type;
 
+        @Schema(
+                description = "Email or phone number",
+                example = "test@test.com",
+                required = true
+        )
         String value;
 
+        public enum Type {
+            EMAIL,
+            PHONE
+        }
     }
 
     /**
@@ -82,7 +91,13 @@ public class Candidate {
     @Data
     public static class Job {
 
+        @Schema(
+                description = "The order of the candidate job by start date",
+                example = "1",
+                required = true
+        )
         Integer sequence;
+
         String companyId;
         String companyName;
         String title;
@@ -105,6 +120,12 @@ public class Candidate {
          */
         String id;
         Integer monthsExperience;
+
+        @Schema(
+                description = "The order of the skill/ability by the number of years in experience, highly-honed skills should show up first",
+                example = "1",
+                required = true
+        )
         Integer sequence;
 
         String classification; //skills, products, certification
