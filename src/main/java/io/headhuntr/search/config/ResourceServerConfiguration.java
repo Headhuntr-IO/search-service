@@ -13,6 +13,7 @@ public class ResourceServerConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 .authorizeRequests(authorizeRequests -> authorizeRequests
                         .antMatchers("/actuator/health", "/swagger-ui/**", "/v3/api-docs**").permitAll()
                         .anyRequest().authenticated())
