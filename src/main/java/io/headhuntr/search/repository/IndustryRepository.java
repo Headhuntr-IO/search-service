@@ -12,5 +12,5 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 )
 @SecurityRequirement(name = "api")
 @XRayEnabled
-public interface IndustryRepository extends ElasticsearchRepository<Industry, String> {
+public interface IndustryRepository extends BasicSearchRepository<Industry> {
 }

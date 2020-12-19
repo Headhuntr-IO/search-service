@@ -1,12 +1,30 @@
 {
 	"info": {
-		"_postman_id": "08b1996a-4507-4529-ad8e-5419c3009827",
+		"_postman_id": "dc0087d0-6551-4718-9bc0-a64dda07ff5e",
 		"name": "HH2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Create Candidate",
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/actuator/health",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Skills (SKILL)",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -22,7 +40,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstName\": \"Dolores\",\n    \"lastName\": \"Abernathy\",\n    \"fullName\": \"Dolores Abernathy\",\n    \"monthsExperience\": 32,\n    \"contactDetails\": [\n        {\n            \"sequence\": 1,\n            \"type\": \"EMAIL\",\n            \"value\": \"hacked@hacked.com\"\n        },\n        {\n            \"sequence\": 2,\n            \"type\": \"PERSONAL_PHONE\",\n            \"value\": \"123456789\"\n        }\n    ],\n    \"jobHistory\": [\n        {\n            \"sequence\": 1,\n            \"companyId\": \"1000001\",\n            \"companyName\": \"Delos Corp\",\n            \"title\": \"Host\",\n            \"description\": \"Pretended to be a Human\",\n            \"start\": \"2001-01-01\",\n            \"end\": \"2020-01-01\",\n            \"location\": \"Somewhere in South China Sea\",\n            \"monthsExperience\": 200\n        }\n    ],\n    \"skills\": [\n        {\n            \"id\": \"skill:1000001\",\n            \"monthsExperience\": 20,\n            \"sequence\": 1,\n            \"name\": \"Hacking\",\n            \"category\": \"Computers\",\n            \"classification\": \"SKILL\"\n        }\n    ],\n    \"industries\": [\n        {\n            \"id\": \"1000001\",\n            \"sequence\": 1,\n            \"current\": true,\n            \"monthsExperience\": 20,\n            \"parent\": \"IT\",\n            \"name\": \"Software\",\n            \"start\": \"2001-01-01\",\n            \"end\": \"2020-01-01\"\n        }\n    ]\n}",
+					"raw": "{\n    \"id\": \"skill:1000001\",\n    \"classification\": \"SKILL\",\n    \"name\": \"Hacking\",\n    \"category\": \"Computers\",\n    \"candidateCount\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -30,41 +48,36 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/candidates/100001",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/skills/1",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
-						"candidates",
-						"100001"
+						"skills",
+						"1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "List Candidates",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "Create Skills (CERTIFICATION)",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJraWQiOiJ0S081cmI3ZkVXNDNXMlVyUG5xcmt1NnFSeVFuSDNjWVdZN0ptMVArQTVvPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI5ZGFkMzE5Yy0yMjJhLTQ4MDYtOWI1YS0yNzcyYmNlNWQ2YzgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZ2VuZGVyIjoiTSIsImhoOmludGVybmFsIjoiZmFsc2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9SUTcxdFpxUVQiLCJjb2duaXRvOnVzZXJuYW1lIjoibHluZG9uLmJpYmVyYUBoZWFkaHVudHIuaW8iLCJnaXZlbl9uYW1lIjoiTHluZG9uIE1pY2hhZWwiLCJtaWRkbGVfbmFtZSI6IkNyYXBzaG9vdGVyIiwiYXVkIjoiNW84NnZhc3Q0cDN0aGMxZDljbTFwbjBwOTIiLCJldmVudF9pZCI6ImFhZTc0YTM0LTQyNWYtNDNkOS1hYWZkLTA0ZjY3NTU3NmQxMCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjAyODk2Mzk1LCJleHAiOjE2MDI5ODI3OTUsImlhdCI6MTYwMjg5NjM5NSwiZmFtaWx5X25hbWUiOiJCdXN0ZXJmYWNlIiwiZW1haWwiOiJseW5kb24uYmliZXJhQGhlYWRodW50ci5pbyJ9.kO-YYPxHhn0f6I0yuJfPTZX7_yjKWDp6mYfaXlNniGSTjJlx4rMLrogLGb4KaCD-sQ3Rjv3bNOT4frRw_pGEHh4346bir2tymLpZ6fgzDc9fNRdHuKiLyOSz7Gk7TgO_jnmonvgewuvZ5qoT2ccV9EjtE3JPaXzpzxYPA-CIRZthyX7VUXER9iYaPbGRtz62bfETxEe25KnhAYaHi1qZYY395_JRGju5-ufffRbViTO2ZUBLGOYxR1J2oG2-yA1m_xoGa6juln3wON2RrFrTNDpmcO6meD9Ib1QV1V7kYlvBwtrO5zLKPH6sdPKlDqqYOTl5BdWW-vWqQjP6yvIqtg",
+							"value": "{{accessToken}}",
 							"type": "string"
 						}
 					]
 				},
-				"method": "GET",
+				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\n    \"id\": \"CERTIFICATION:1000001\",\n    \"classification\": \"CERTIFICATION\",\n    \"name\": \"Oracle Certified Java 15 Pro\",\n    \"category\": \"Programming Language\",\n    \"candidateCount\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -72,13 +85,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseUrl}}/candidates/",
+					"raw": "http://localhost:8080/skills/CERTIFICATION:1000001",
+					"protocol": "http",
 					"host": [
-						"{{baseUrl}}"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
-						"candidates",
-						""
+						"skills",
+						"CERTIFICATION:1000001"
 					]
 				}
 			},
@@ -95,7 +110,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJraWQiOiJ0S081cmI3ZkVXNDNXMlVyUG5xcmt1NnFSeVFuSDNjWVdZN0ptMVArQTVvPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI5ZGFkMzE5Yy0yMjJhLTQ4MDYtOWI1YS0yNzcyYmNlNWQ2YzgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZ2VuZGVyIjoiTSIsImhoOmludGVybmFsIjoiZmFsc2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9SUTcxdFpxUVQiLCJjb2duaXRvOnVzZXJuYW1lIjoibHluZG9uLmJpYmVyYUBoZWFkaHVudHIuaW8iLCJnaXZlbl9uYW1lIjoiTHluZG9uIE1pY2hhZWwiLCJtaWRkbGVfbmFtZSI6IkNyYXBzaG9vdGVyIiwiYXVkIjoiNW84NnZhc3Q0cDN0aGMxZDljbTFwbjBwOTIiLCJldmVudF9pZCI6ImFhZTc0YTM0LTQyNWYtNDNkOS1hYWZkLTA0ZjY3NTU3NmQxMCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjAyODk2Mzk1LCJleHAiOjE2MDI5ODI3OTUsImlhdCI6MTYwMjg5NjM5NSwiZmFtaWx5X25hbWUiOiJCdXN0ZXJmYWNlIiwiZW1haWwiOiJseW5kb24uYmliZXJhQGhlYWRodW50ci5pbyJ9.kO-YYPxHhn0f6I0yuJfPTZX7_yjKWDp6mYfaXlNniGSTjJlx4rMLrogLGb4KaCD-sQ3Rjv3bNOT4frRw_pGEHh4346bir2tymLpZ6fgzDc9fNRdHuKiLyOSz7Gk7TgO_jnmonvgewuvZ5qoT2ccV9EjtE3JPaXzpzxYPA-CIRZthyX7VUXER9iYaPbGRtz62bfETxEe25KnhAYaHi1qZYY395_JRGju5-ufffRbViTO2ZUBLGOYxR1J2oG2-yA1m_xoGa6juln3wON2RrFrTNDpmcO6meD9Ib1QV1V7kYlvBwtrO5zLKPH6sdPKlDqqYOTl5BdWW-vWqQjP6yvIqtg",
+							"value": "{{accessToken}}",
 							"type": "string"
 						}
 					]
@@ -125,7 +140,7 @@
 			"response": []
 		},
 		{
-			"name": "List ES:Candidates",
+			"name": "List Candidates",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -135,7 +150,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJraWQiOiJ0S081cmI3ZkVXNDNXMlVyUG5xcmt1NnFSeVFuSDNjWVdZN0ptMVArQTVvPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI5ZGFkMzE5Yy0yMjJhLTQ4MDYtOWI1YS0yNzcyYmNlNWQ2YzgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZ2VuZGVyIjoiTSIsImhoOmludGVybmFsIjoiZmFsc2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9SUTcxdFpxUVQiLCJjb2duaXRvOnVzZXJuYW1lIjoibHluZG9uLmJpYmVyYUBoZWFkaHVudHIuaW8iLCJnaXZlbl9uYW1lIjoiTHluZG9uIE1pY2hhZWwiLCJtaWRkbGVfbmFtZSI6IkNyYXBzaG9vdGVyIiwiYXVkIjoiNW84NnZhc3Q0cDN0aGMxZDljbTFwbjBwOTIiLCJldmVudF9pZCI6ImFhZTc0YTM0LTQyNWYtNDNkOS1hYWZkLTA0ZjY3NTU3NmQxMCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjAyODk2Mzk1LCJleHAiOjE2MDI5ODI3OTUsImlhdCI6MTYwMjg5NjM5NSwiZmFtaWx5X25hbWUiOiJCdXN0ZXJmYWNlIiwiZW1haWwiOiJseW5kb24uYmliZXJhQGhlYWRodW50ci5pbyJ9.kO-YYPxHhn0f6I0yuJfPTZX7_yjKWDp6mYfaXlNniGSTjJlx4rMLrogLGb4KaCD-sQ3Rjv3bNOT4frRw_pGEHh4346bir2tymLpZ6fgzDc9fNRdHuKiLyOSz7Gk7TgO_jnmonvgewuvZ5qoT2ccV9EjtE3JPaXzpzxYPA-CIRZthyX7VUXER9iYaPbGRtz62bfETxEe25KnhAYaHi1qZYY395_JRGju5-ufffRbViTO2ZUBLGOYxR1J2oG2-yA1m_xoGa6juln3wON2RrFrTNDpmcO6meD9Ib1QV1V7kYlvBwtrO5zLKPH6sdPKlDqqYOTl5BdWW-vWqQjP6yvIqtg",
+							"value": "{{accessToken}}",
 							"type": "string"
 						}
 					]
@@ -152,15 +167,92 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9200/hh2_candidates/_search",
+					"raw": "{{baseUrl}}/candidates/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"candidates",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Skills",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/skills/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"skills",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Skills (PRODUCT)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"PRODUCT:1000001\",\n    \"classification\": \"PRODUCT\",\n    \"name\": \"SAP\",\n    \"category\": \"Resource Management Software\",\n    \"candidateCount\": 20\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/skills/PRODUCT:1000001",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "9200",
+					"port": "8080",
 					"path": [
-						"hh2_candidates",
-						"_search"
+						"skills",
+						"PRODUCT:1000001"
 					]
 				}
 			},
@@ -209,7 +301,7 @@
 			"response": []
 		},
 		{
-			"name": "Create Skills (SKILL)",
+			"name": "Create Candidate",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -225,7 +317,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"skill:1000001\",\n    \"classification\": \"SKILL\",\n    \"name\": \"Hacking\",\n    \"category\": \"Computers\",\n    \"candidateCount\": 1\n}",
+					"raw": "{\n    \"firstName\": \"Dolores\",\n    \"lastName\": \"Abernathy\",\n    \"fullName\": \"Dolores Abernathy\",\n    \"monthsExperience\": 32,\n    \"contactDetails\": [\n        {\n            \"sequence\": 1,\n            \"type\": \"EMAIL\",\n            \"value\": \"hacked@hacked.com\"\n        },\n        {\n            \"sequence\": 2,\n            \"type\": \"PERSONAL_PHONE\",\n            \"value\": \"123456789\"\n        }\n    ],\n    \"jobHistory\": [\n        {\n            \"sequence\": 1,\n            \"companyId\": \"1000001\",\n            \"companyName\": \"Delos Corp\",\n            \"title\": \"Host\",\n            \"description\": \"Pretended to be a Human\",\n            \"start\": \"2001-01-01\",\n            \"end\": \"2020-01-01\",\n            \"location\": \"Somewhere in South China Sea\",\n            \"monthsExperience\": 200\n        }\n    ],\n    \"skills\": [\n        {\n            \"id\": \"skill:1000001\",\n            \"monthsExperience\": 20,\n            \"sequence\": 1,\n            \"name\": \"Hacking\",\n            \"category\": \"Computers\",\n            \"classification\": \"SKILL\"\n        }\n    ],\n    \"industries\": [\n        {\n            \"id\": \"1000001\",\n            \"sequence\": 1,\n            \"current\": true,\n            \"monthsExperience\": 20,\n            \"parent\": \"IT\",\n            \"name\": \"Software\",\n            \"start\": \"2001-01-01\",\n            \"end\": \"2020-01-01\"\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -233,38 +325,39 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/skills/SKILL:1000001",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/candidates/1",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
-						"skills",
-						"SKILL:1000001"
+						"candidates",
+						"1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Create Skills (PRODUCT)",
+			"name": "List ES:Candidates",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{accessToken}}",
+							"value": "eyJraWQiOiJ0S081cmI3ZkVXNDNXMlVyUG5xcmt1NnFSeVFuSDNjWVdZN0ptMVArQTVvPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI5ZGFkMzE5Yy0yMjJhLTQ4MDYtOWI1YS0yNzcyYmNlNWQ2YzgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZ2VuZGVyIjoiTSIsImhoOmludGVybmFsIjoiZmFsc2UiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9SUTcxdFpxUVQiLCJjb2duaXRvOnVzZXJuYW1lIjoibHluZG9uLmJpYmVyYUBoZWFkaHVudHIuaW8iLCJnaXZlbl9uYW1lIjoiTHluZG9uIE1pY2hhZWwiLCJtaWRkbGVfbmFtZSI6IkNyYXBzaG9vdGVyIiwiYXVkIjoiNW84NnZhc3Q0cDN0aGMxZDljbTFwbjBwOTIiLCJldmVudF9pZCI6ImFhZTc0YTM0LTQyNWYtNDNkOS1hYWZkLTA0ZjY3NTU3NmQxMCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjAyODk2Mzk1LCJleHAiOjE2MDI5ODI3OTUsImlhdCI6MTYwMjg5NjM5NSwiZmFtaWx5X25hbWUiOiJCdXN0ZXJmYWNlIiwiZW1haWwiOiJseW5kb24uYmliZXJhQGhlYWRodW50ci5pbyJ9.kO-YYPxHhn0f6I0yuJfPTZX7_yjKWDp6mYfaXlNniGSTjJlx4rMLrogLGb4KaCD-sQ3Rjv3bNOT4frRw_pGEHh4346bir2tymLpZ6fgzDc9fNRdHuKiLyOSz7Gk7TgO_jnmonvgewuvZ5qoT2ccV9EjtE3JPaXzpzxYPA-CIRZthyX7VUXER9iYaPbGRtz62bfETxEe25KnhAYaHi1qZYY395_JRGju5-ufffRbViTO2ZUBLGOYxR1J2oG2-yA1m_xoGa6juln3wON2RrFrTNDpmcO6meD9Ib1QV1V7kYlvBwtrO5zLKPH6sdPKlDqqYOTl5BdWW-vWqQjP6yvIqtg",
 							"type": "string"
 						}
 					]
 				},
-				"method": "PUT",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"PRODUCT:1000001\",\n    \"classification\": \"PRODUCT\",\n    \"name\": \"SAP\",\n    \"category\": \"Resource Management Software\",\n    \"candidateCount\": 20\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -272,22 +365,25 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/skills/PRODUCT:1000001",
+					"raw": "http://localhost:9200/hh2_candidates/_search",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "9200",
 					"path": [
-						"skills",
-						"PRODUCT:1000001"
+						"hh2_candidates",
+						"_search"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Create Skills (CERTIFICATION)",
+			"name": "List Candidates",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -299,11 +395,11 @@
 						}
 					]
 				},
-				"method": "PUT",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"CERTIFICATION:1000001\",\n    \"classification\": \"CERTIFICATION\",\n    \"name\": \"Oracle Certified Java 15 Pro\",\n    \"category\": \"Programming Language\",\n    \"candidateCount\": 1\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -311,15 +407,20 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/skills/CERTIFICATION:1000001",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/candidates/search/findAllByFirstNameOrLastName?name=test",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
-						"skills",
-						"CERTIFICATION:1000001"
+						"candidates",
+						"search",
+						"findAllByFirstNameOrLastName"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "test"
+						}
 					]
 				}
 			},
@@ -365,6 +466,5 @@
 			},
 			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

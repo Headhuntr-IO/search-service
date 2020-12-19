@@ -9,8 +9,8 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 @Tag(
         name = "Candidate Resource",
@@ -18,7 +18,7 @@ import org.springframework.data.repository.query.Param;
 )
 @SecurityRequirement(name = "api")
 @XRayEnabled
-public interface CandidateRepository extends ElasticsearchRepository<Candidate, String> {
+public interface CandidateRepository extends BasicSearchRepository<Candidate> {
 
     @Operation(
             operationId = "Candidate.findAllByFirstNameOrLastName",
@@ -31,5 +31,6 @@ public interface CandidateRepository extends ElasticsearchRepository<Candidate, 
                     description = "Found results"
             )
     })
+    @PreAuthorize("permitAll()")
     Page<Candidate> findAllByFirstNameOrLastName(@Param("name") String name, Pageable page);
 }
